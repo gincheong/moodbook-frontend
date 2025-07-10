@@ -1,5 +1,5 @@
 import styles from './SideBar.module.css';
-import moodBookLogo from '@/assets/moodbook_logo.svg';
+import moodBookLogo from '@/assets/moodbook_logo.png';
 
 export const SideBar = () => {
   return (
