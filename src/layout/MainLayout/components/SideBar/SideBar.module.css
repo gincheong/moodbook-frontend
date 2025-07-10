@@ -1,0 +1,31 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0px;
+  width: 200px;
+
+  background:
+    linear-gradient(180deg, #6d7fc0 0%, rgba(106, 98, 95, 0.62) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+.logo {
+  width: 121px;
+  height: 121px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 65px;
+  margin-top: 33px;
+  margin-bottom: 97px;
+
+  text-align: center;
+  white-space: pre-wrap;
+  font-size: 15px;
+  color: #fff;
+}
