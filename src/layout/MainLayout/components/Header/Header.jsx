@@ -1,17 +1,31 @@
 import styles from './Header.module.css';
 import profileImage from '@/assets/profile.png';
 import { Dropdown, Input } from 'antd';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { Paths } from '../../../../routes/routes';
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   const onLogoutClick = () => {
     alert('로그아웃');
+  };
+
+  /**
+   * @param {string} value
+   */
+  const onSearch = (value) => {
+    if (value.trim().length === 0) {
+      return;
+    }
+
+    navigate(`${Paths.SEARCH}?keyword=${value}`);
   };
 
   return (
     <header className={styles.header}>
       <div className={styles.inputWrapper}>
-        <Input type='text' placeholder='검색어를 입력하세요.' />
+        <Input.Search type='' placeholder='검색어를 입력하세요.' onSearch={onSearch} />
       </div>
       <Dropdown
         menu={{
