@@ -3,12 +3,6 @@
   flex-direction: column;
   align-items: center;
   padding: 25px 0px;
-
-  background:
-    linear-gradient(180deg, #6d7fc0 0%, rgba(106, 98, 95, 0.62) 100%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
 }
 
 .logo {
@@ -27,4 +21,14 @@
   white-space: pre-wrap;
   font-size: 15px;
   color: #fff;
+}
+
+.logoAnchor {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
