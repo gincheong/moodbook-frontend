@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "책이름1",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 2,
+    "title": "책이름2",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 3,
+    "title": "책이름3",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 4,
+    "title": "책이름4",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 5,
+    "title": "책이름5",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 6,
+    "title": "책이름6",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 7,
+    "title": "책이름7",
+    "coverImageUrl": "https://placehold.co/300x400"
+  },
+  {
+    "id": 8,
+    "title": "책이름8",
+    "coverImageUrl": "https://placehold.co/300x400"
+  }
+]
