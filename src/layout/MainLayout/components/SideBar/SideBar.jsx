@@ -13,7 +13,7 @@ export const SideBar = () => {
         </Link>
         <div className={styles.description}>
           <span>{'지금 내가 읽고 싶은 책,\nAI가 찾아드릴게요'}</span>
-          <span>오늘의 기분은 어떠신가요?</span>
+          <span>{'오늘의 기분은\n어떠신가요?'}</span>
         </div>
       </div>
     </Layout.Sider>
