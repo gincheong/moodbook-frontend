@@ -4,6 +4,10 @@ import { Dropdown, Input } from 'antd';
 import { Link } from 'react-router';
 
 export const Header = () => {
+  const onLogoutClick = () => {
+    alert('로그아웃');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.inputWrapper}>
@@ -19,6 +23,14 @@ export const Header = () => {
             {
               key: 'me',
               label: <Link to='/admin'>관리자 페이지</Link>,
+            },
+            {
+              key: 'logout',
+              label: (
+                <button type='button' className={styles.logout} onClick={onLogoutClick}>
+                  로그아웃
+                </button>
+              ),
             },
           ],
         }}
