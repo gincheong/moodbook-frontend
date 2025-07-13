@@ -1,10 +1,21 @@
 import { createBrowserRouter } from 'react-router';
-import { Main } from '@/pages/Main/Main';
-import { Book } from '@/pages/Book/Book';
-import { MyPage } from '@/pages/MyPage/MyPage';
-import { Admin } from '@/pages/Admin/Admin';
-import { SignUp } from '@/pages/SignUp/SignUp';
-import { MainLayout } from '@/layout/MainLayout/MainLayout';
+import { Main } from '../pages/Main/Main';
+import { Book } from '../pages/Book/Book';
+import { MyPage } from '../pages/MyPage/MyPage';
+import { Admin } from '../pages/Admin/Admin';
+import { SignUp } from '../pages/SignUp/SignUp';
+import { MainLayout } from '../layout/MainLayout/MainLayout';
+import { Search } from '../pages/Search/Search';
+
+export const Paths = {
+  MAIN: '/',
+  BOOK: '/book',
+  ME: '/me',
+  ADMIN: '/admin',
+  SEARCH: '/search',
+
+  SIGN_UP: '/sign-up',
+};
 
 export const router = createBrowserRouter([
   {
@@ -15,12 +26,13 @@ export const router = createBrowserRouter([
         Component: MainLayout,
         children: [
           { index: true, Component: Main },
-          { path: 'book', Component: Book },
-          { path: 'me', Component: MyPage },
-          { path: 'admin', Component: Admin },
+          { path: Paths.BOOK, Component: Book },
+          { path: Paths.ME, Component: MyPage },
+          { path: Paths.ADMIN, Component: Admin },
+          { path: Paths.SEARCH, Component: Search },
         ],
       },
-      { path: 'sign-up', Component: SignUp },
+      { path: Paths.SIGN_UP, Component: SignUp },
     ],
   },
 ]);
