@@ -1,22 +1,22 @@
 import { useNavigate } from 'react-router';
 import styles from './SignUp.module.css';
 import moodBookLogo from '@/assets/moodbook_logo.png';
+import { Button, Card, Form, Input, message, Typography } from 'antd';
 
 export const SignUp = () => {
   const navigate = useNavigate();
 
-  const onSignUpSubmit = async (event) => {
-    event.preventDefault();
+  const formItemStyle = {
+    marginBottom: 0,
+  };
 
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const passwordConfirm = event.target.passwordConfirm.value;
-    const phone = event.target.phone.value;
+  const onSignUpSubmit = async (values) => {
+    const { email, password, passwordConfirm, phone } = values;
 
     console.log(email, password, passwordConfirm, phone);
 
     if (password !== passwordConfirm) {
-      alert('비밀번호 불일치');
+      message.error('비밀번호가 서로 다릅니다.');
       return;
     }
 
@@ -24,34 +24,44 @@ export const SignUp = () => {
     if (response.status === 200) {
       navigate('/');
     } else {
-      alert('회원가입 실패');
+      message.error('가입 요청 중 오류가 발생했습니다.');
     }
   };
 
   return (
     <section className={styles.container}>
       <img className={styles.logo} src={moodBookLogo} alt='MoodBook Logo' />
-      <form className={styles.inner} onSubmit={onSignUpSubmit}>
-        <label htmlFor='email' className={styles.inputContainer}>
-          이메일
-          <input required id='email' type='email' className={styles.input} />
-        </label>
-        <label htmlFor='password' className={styles.inputContainer}>
-          비밀번호
-          <input required id='password' type='password' className={styles.input} />
-        </label>
-        <label htmlFor='passwordConfirm' className={styles.inputContainer}>
-          비밀번호 확인
-          <input required id='passwordConfirm' type='password' className={styles.input} />
-        </label>
-        <label htmlFor='phone' className={styles.inputContainer}>
-          전화번호
-          <input required id='phone' type='tel' className={styles.input} />
-        </label>
-        <button type='submit' className={styles.signUpButton}>
-          회원가입
-        </button>
-      </form>
+      <Card>
+        <Form id='signUp' className={styles.inner} onFinish={onSignUpSubmit}>
+          <div className={styles.formItemContainer}>
+            <Typography.Text>Email</Typography.Text>
+            <Form.Item name='email' style={formItemStyle}>
+              <Input required type='email' />
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
+            <Typography.Text>비밀번호</Typography.Text>
+            <Form.Item name='password' style={formItemStyle}>
+              <Input required type='password' />
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
+            <Typography.Text>비밀번호 확인</Typography.Text>
+            <Form.Item name='passwordConfirm' style={formItemStyle}>
+              <Input required type='password' />
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
+            <Typography.Text>전화번호</Typography.Text>
+            <Form.Item name='phone' style={formItemStyle}>
+              <Input required type='tel' />
+            </Form.Item>
+          </div>
+          <Button type='default' size='large' htmlType='submit' key='submit'>
+            회원가입
+          </Button>
+        </Form>
+      </Card>
     </section>
   );
 };
