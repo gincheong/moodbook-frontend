@@ -18,7 +18,7 @@ export const useRecommendationBooks = () => {
 
     if (response.ok) {
       const json = await response.json();
-      setBooks((books) => [...books, ...json.data]);
+      setBooks((books) => [...books, ...json.content]);
       setTotalPage(json.totalPage);
     } else {
       console.error('getBooks Error');
