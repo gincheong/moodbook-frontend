@@ -1,6 +1,24 @@
-import { Card, Image, Typography } from 'antd';
+import { Image, Typography } from 'antd';
 import styles from './BookList.module.css';
-import { CardContent, Cover, Description, Title } from './BookList.styles';
+import {
+  CardContent,
+  Cover,
+  Description,
+  Title,
+  Card,
+} from './BookList.styles';
+
+const getRandomColor = () => {
+  const colors = [
+    '#FDFD96',
+    '#FFB3BA',
+    '#B5EAD7',
+    '#C9C9FF',
+    '#FFDAC1',
+    '#E2F0CB',
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 
 /**
  * @param {object} props
@@ -17,9 +35,9 @@ export const BookList = (props) => {
       <li className={styles.list}>
         {books.map((book, index) => (
           <ol key={`${book.id}-${index}`} className={styles.item}>
-            <Card size='small'>
+            <Card size='small' $backgroundColor={getRandomColor()}>
               <CardContent>
-                <div className={styles.text}>
+                <div>
                   <Title>{book.title}</Title>
                   <Description>{book.description}</Description>
                 </div>
