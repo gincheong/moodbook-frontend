@@ -6,10 +6,22 @@
   padding: 10px 30px;
 }
 
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.flex {
+  flex: 1;
+}
+
 .inputWrapper {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 300px;
 }
 
 .profileImage {

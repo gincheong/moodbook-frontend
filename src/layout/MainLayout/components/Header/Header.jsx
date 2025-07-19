@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import profileImage from '@/assets/profile.png';
-import { Dropdown, Input } from 'antd';
+import { Button, Dropdown, Input } from 'antd';
 import { Link, useNavigate } from 'react-router';
 import { Paths } from '../../../../routes/routes';
 
@@ -24,6 +24,15 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Button type='link' href={Paths.AI_SEARCH}>
+          AI 검색
+        </Button>
+        <Button type='link' href={Paths.SELECT_MOOD}>
+          기분 선택
+        </Button>
+      </nav>
+      <div className={styles.flex} />
       <div className={styles.inputWrapper}>
         <Input.Search
           type=''
