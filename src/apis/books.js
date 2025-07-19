@@ -1,4 +1,5 @@
-import { Env } from '../utils/env';
+import { defaultFetch } from '.';
+import { Envs } from '../utils/env';
 
 /**
  * @param {object} params
@@ -12,7 +13,7 @@ export const getTrendingBooks = (params) => {
     sort: ['string'],
   }).toString();
 
-  const url = `${Env.VITE_API_ENDPOINT}/api/trending?${searchParams}`;
+  const url = `${Envs.VITE_API_ENDPOINT}/api/trending?${searchParams}`;
 
-  return fetch(url, { method: 'GET' });
+  return defaultFetch(url, { method: 'GET' });
 };
