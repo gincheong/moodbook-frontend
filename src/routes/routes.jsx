@@ -6,6 +6,8 @@ import { Admin } from '../pages/Admin/Admin';
 import { SignUp } from '../pages/SignUp/SignUp';
 import { MainLayout } from '../layout/MainLayout/MainLayout';
 import { Search } from '../pages/Search/Search';
+import { AiSearch } from '../pages/AiSearch/AiSearch';
+import { SelectMood } from '../pages/SelectMood/SelectMood';
 
 export const Paths = {
   MAIN: '/',
@@ -13,6 +15,8 @@ export const Paths = {
   ME: '/me',
   ADMIN: '/admin',
   SEARCH: '/search',
+  AI_SEARCH: '/ai-search',
+  SELECT_MOOD: '/select-mood',
 
   SIGN_UP: '/sign-up',
 };
@@ -30,6 +34,8 @@ export const router = createBrowserRouter([
           { path: Paths.ME, Component: MyPage },
           { path: Paths.ADMIN, Component: Admin },
           { path: Paths.SEARCH, Component: Search },
+          { path: Paths.AI_SEARCH, Component: AiSearch },
+          { path: Paths.SELECT_MOOD, Component: SelectMood },
         ],
       },
       { path: Paths.SIGN_UP, Component: SignUp },
