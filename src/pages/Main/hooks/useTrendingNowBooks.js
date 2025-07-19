@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
+import { getTrendingBooks } from '../../../apis/books';
 
-// TODO API로 페이지 사이즈 전달 필요하다면 이 값 사용
 const GET_BOOK_PAGE_SIZE = 10;
 
 export const useTrendingNowBooks = () => {
@@ -14,8 +14,7 @@ export const useTrendingNowBooks = () => {
       return;
     }
 
-    // TODO page에 따라 새로 API 호출
-    const response = await fetch('./dummyBooks.json', { method: 'GET' });
+    const response = await getTrendingBooks({ size: GET_BOOK_PAGE_SIZE, page });
 
     if (response.ok) {
       const json = await response.json();
@@ -29,6 +28,7 @@ export const useTrendingNowBooks = () => {
 
   useEffect(() => {
     requestGetBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { books, requestGetBooks };

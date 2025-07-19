@@ -4,29 +4,13 @@ import { useTrendingNowBooks } from './hooks/useTrendingNowBooks';
 import { useRecommendationBooks } from './hooks/useRecommendationBooks';
 
 export const Main = () => {
-  const { books: trendingNowBooks, requestGetBooks: getTrendingNowBooks } =
-    useTrendingNowBooks();
-  const {
-    books: recommendationBooks,
-    requestGetBooks: getRecommendationBooks,
-  } = useRecommendationBooks();
+  const { books: trendingNowBooks } = useTrendingNowBooks();
+  const { books: recommendationBooks } = useRecommendationBooks();
 
   return (
     <section className={styles.container}>
-      <BookList
-        title='Trending Now'
-        books={trendingNowBooks}
-        onIntersect={async () => {
-          await getTrendingNowBooks();
-        }}
-      />
-      <BookList
-        title='Recommendation'
-        books={recommendationBooks}
-        onIntersect={async () => {
-          await getRecommendationBooks();
-        }}
-      />
+      <BookList title='Trending Now' books={trendingNowBooks} />
+      <BookList title='Recommendation' books={recommendationBooks} />
     </section>
   );
 };

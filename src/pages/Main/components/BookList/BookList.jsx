@@ -7,16 +7,19 @@ import { useIntersectionObserver } from '../../../../hooks/useIntersectionObserv
  * @param {object} props
  * @param {object[]} props.books
  * @param {string} props.title
- * @param {function} props.onIntersect
+ * @param {function} [props.onIntersect]
  */
 export const BookList = (props) => {
+  // TODO Carousel 적용
   const { title, books, onIntersect } = props;
 
   const infinityScrollIndicatorRef = useRef(null);
 
   useIntersectionObserver({
     target: infinityScrollIndicatorRef.current,
-    onIntersect,
+    onIntersect: () => {
+      onIntersect && onIntersect();
+    },
   });
 
   return (
