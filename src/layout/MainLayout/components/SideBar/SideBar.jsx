@@ -1,4 +1,4 @@
-import { Layout, Typography } from 'antd';
+import { Layout } from 'antd';
 import styles from './SideBar.module.css';
 import moodBookLogo from '@/assets/moodbook_logo.png';
 import { Link } from 'react-router';
