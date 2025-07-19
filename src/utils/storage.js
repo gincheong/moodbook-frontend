@@ -1,4 +1,13 @@
 /**
+ * @typedef {Object} StorageKey
+ * @property {string} ACCESS_TOKEN
+ */
+/** @type {StorageKey} */
+export const StorageKeys = {
+  ACCESS_TOKEN: 'ACCESS_TOKEN',
+};
+
+/**
  * @param {string} key localStorage Key
  */
 export const getLocalStorageItem = (key) => {
