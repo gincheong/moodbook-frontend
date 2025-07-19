@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// TODO API로 페이지 사이즈 전달 필요하다면 이 값 사용
 const GET_BOOK_PAGE_SIZE = 10;
 
 export const useRecommendationBooks = () => {
