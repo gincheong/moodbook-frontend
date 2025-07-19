@@ -25,31 +25,40 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.inputWrapper}>
-        <Input.Search type='' placeholder='검색어를 입력하세요.' onSearch={onSearch} />
+        <Input.Search
+          type=''
+          placeholder='검색어를 입력하세요.'
+          onSearch={onSearch}
+        />
       </div>
       <Dropdown
         menu={{
           items: [
+            { key: 'admin', label: <Link to='/me'>마이페이지</Link> },
             {
-              key: 'admin',
-              label: <Link to='/me'>마이페이지</Link>,
+              key: 'logout',
+              label: (
+                <button
+                  type='button'
+                  className={styles.logout}
+                  onClick={onLogoutClick}
+                >
+                  로그아웃
+                </button>
+              ),
             },
             {
               key: 'me',
               label: <Link to='/admin'>관리자 페이지</Link>,
             },
-            {
-              key: 'logout',
-              label: (
-                <button type='button' className={styles.logout} onClick={onLogoutClick}>
-                  로그아웃
-                </button>
-              ),
-            },
           ],
         }}
       >
-        <img className={styles.profileImage} src={profileImage} alt='profile image' />
+        <img
+          className={styles.profileImage}
+          src={profileImage}
+          alt='profile image'
+        />
       </Dropdown>
     </header>
   );
