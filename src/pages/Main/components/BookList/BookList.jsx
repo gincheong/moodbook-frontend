@@ -1,4 +1,4 @@
-import { Card, Image } from 'antd';
+import { Card, Image, Typography } from 'antd';
 import styles from './BookList.module.css';
 import { useRef } from 'react';
 import { useIntersectionObserver } from '../../../../hooks/useIntersectionObserver';
@@ -24,7 +24,7 @@ export const BookList = (props) => {
 
   return (
     <section>
-      <h3>{title}</h3>
+      <Typography.Title level={4}>{title}</Typography.Title>
       <li className={styles.list}>
         {books.map((book, index) => (
           <ol key={`${book.id}-${index}`} className={styles.item}>
