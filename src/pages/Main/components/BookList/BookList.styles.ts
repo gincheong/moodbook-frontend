@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { Card as AntdCard } from 'antd';
 
+export const Wrapper = styled.section`
+  padding: 0px 20px;
+`;
+
 interface CardProps {
   $backgroundColor: string;
 }
 export const Card = styled(AntdCard)<CardProps>`
   background-color: ${({ $backgroundColor }) => $backgroundColor};
+  margin: 10px;
 `;
 
 export const CardContent = styled.div`
@@ -21,6 +26,7 @@ export const Title = styled.span`
   flex-direction: column;
   row-gap: 2px;
   font-weight: 500;
+  color: red;
 `;
 
 export const Description = styled.span`
@@ -36,4 +42,12 @@ export const Cover = styled.div`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+`;
+
+export const CustomArrow = styled.div`
+  display: block;
+
+  &::before {
+    color: black;
+  }
 `;

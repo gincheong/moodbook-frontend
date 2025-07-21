@@ -1,12 +1,15 @@
 import { Image, Typography } from 'antd';
-import styles from './BookList.module.css';
 import {
   CardContent,
   Cover,
   Description,
   Title,
   Card,
+  CustomArrow,
+  Wrapper,
 } from './BookList.styles';
+import Slider, { CustomArrowProps, Settings } from 'react-slick';
+import { Book } from '@/apis/books';
 
 const getRandomColor = () => {
   const colors = [
@@ -20,21 +23,39 @@ const getRandomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-/**
- * @param {object} props
- * @param {object[]} props.books
- * @param {string} props.title
- */
-export const BookList = (props) => {
+const Arrow = (props: CustomArrowProps) => {
+  return <CustomArrow {...props} />;
+};
+
+interface BookListProps {
+  books: Book[];
+  title: string;
+}
+export const BookList = (props: BookListProps) => {
   // TODO Carousel 적용
   const { title, books } = props;
 
+  const sliderSettings: Settings = {
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    swipeToSlide: true,
+    variableWidth: true,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 600, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
+    ],
+    prevArrow: <Arrow />,
+    nextArrow: <Arrow />,
+  };
+
   return (
-    <section>
+    <Wrapper>
       <Typography.Title level={4}>{title}</Typography.Title>
-      <li className={styles.list}>
-        {books.map((book, index) => (
-          <ol key={`${book.id}-${index}`} className={styles.item}>
+      <Slider {...sliderSettings}>
+        {books.map((book) => (
+          <div key={book.bookId}>
             <Card size='small' $backgroundColor={getRandomColor()}>
               <CardContent>
                 <div>
@@ -50,9 +71,9 @@ export const BookList = (props) => {
                 </Cover>
               </CardContent>
             </Card>
-          </ol>
+          </div>
         ))}
-      </li>
-    </section>
+      </Slider>
+    </Wrapper>
   );
 };
