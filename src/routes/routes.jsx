@@ -1,13 +1,14 @@
 import { createBrowserRouter } from 'react-router';
-import { Main } from '../pages/Main/Main';
-import { Book } from '../pages/Book/Book';
-import { MyPage } from '../pages/MyPage/MyPage';
-import { Admin } from '../pages/Admin/Admin';
-import { SignUp } from '../pages/SignUp/SignUp';
-import { MainLayout } from '../layout/MainLayout/MainLayout';
-import { Search } from '../pages/Search/Search';
-import { AiSearch } from '../pages/AiSearch/AiSearch';
-import { SelectMood } from '../pages/SelectMood/SelectMood';
+import { Main } from '@/pages/Main/Main';
+import { Book } from '@/pages/Book/Book';
+import { MyPage } from '@/pages/MyPage/MyPage';
+import { Admin } from '@/pages/Admin/Admin';
+import { SignUp } from '@/pages/SignUp/SignUp';
+import { MainLayout } from '@/layout/MainLayout/MainLayout';
+import { Search } from '@/pages/Search/Search';
+import { AiSearch } from '@/pages/AiSearch/AiSearch';
+import { SelectMood } from '@/pages/SelectMood/SelectMood';
+import { SignIn } from '@/pages/SignIn/SignIn';
 
 export const Paths = {
   MAIN: '/',
@@ -19,6 +20,7 @@ export const Paths = {
   SELECT_MOOD: '/select-mood',
 
   SIGN_UP: '/sign-up',
+  SIGN_IN: '/sign-in',
 };
 
 export const router = createBrowserRouter([
@@ -39,6 +41,7 @@ export const router = createBrowserRouter([
         ],
       },
       { path: Paths.SIGN_UP, Component: SignUp },
+      { path: Paths.SIGN_IN, Component: SignIn },
     ],
   },
 ]);
