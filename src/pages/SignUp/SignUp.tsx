@@ -1,7 +1,16 @@
 import { useNavigate } from 'react-router';
 import styles from './SignUp.module.css';
 import moodBookLogo from '@/assets/moodbook_logo.png';
-import { Button, Card, Form, Input, message, Typography } from 'antd';
+import { Button, Card, Form, Input, message, Radio, Typography } from 'antd';
+import {
+  Genders,
+  requestTempSignUp,
+  RequestTempSignUpInput,
+} from '@/apis/user';
+
+interface FormValues extends RequestTempSignUpInput {
+  passwordConfirm: string;
+}
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -10,17 +19,21 @@ export const SignUp = () => {
     marginBottom: 0,
   };
 
-  const onSignUpSubmit = async (values) => {
-    const { email, password, passwordConfirm, phone } = values;
-
-    console.log(email, password, passwordConfirm, phone);
+  const onSignUpSubmit = async (values: FormValues) => {
+    const { email, password, passwordConfirm, contact, name, gender } = values;
 
     if (password !== passwordConfirm) {
       message.error('비밀번호가 서로 다릅니다.');
       return;
     }
 
-    const response = await fetch('/api/oauth/signUp', { method: 'POST' });
+    const response = await requestTempSignUp({
+      email,
+      password,
+      contact,
+      gender,
+      name,
+    });
     if (response.status === 200) {
       navigate('/');
     } else {
@@ -52,9 +65,24 @@ export const SignUp = () => {
             </Form.Item>
           </div>
           <div className={styles.formItemContainer}>
+            <Typography.Text>이름</Typography.Text>
+            <Form.Item name='name' style={formItemStyle}>
+              <Input required type='text' />
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
             <Typography.Text>전화번호</Typography.Text>
-            <Form.Item name='phone' style={formItemStyle}>
+            <Form.Item name='contact' style={formItemStyle}>
               <Input required type='tel' />
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
+            <Typography.Text>성별</Typography.Text>
+            <Form.Item name='gender' style={formItemStyle}>
+              <Radio.Group>
+                <Radio value={Genders.MALE}>남성</Radio>
+                <Radio value={Genders.FEMALE}>여성</Radio>
+              </Radio.Group>
             </Form.Item>
           </div>
           <Button type='default' size='large' htmlType='submit' key='submit'>
