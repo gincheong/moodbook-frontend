@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Card as AntdCard } from 'antd';
 
-export const Card = styled(AntdCard)`
+interface CardProps {
+  $backgroundColor: string;
+}
+export const Card = styled(AntdCard)<CardProps>`
   background-color: ${({ $backgroundColor }) => $backgroundColor};
 `;
 
