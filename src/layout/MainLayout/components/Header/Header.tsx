@@ -3,6 +3,7 @@ import { Button, Input } from 'antd';
 import { useNavigate } from 'react-router';
 import { Paths } from '../../../../routes/routes';
 import { ProfileIcon } from './components/ProfileIcon/ProfileIcon';
+import { AlarmIcon } from './components/AlarmIcon/AlarmIcon';
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ export const Header = () => {
           onSearch={onSearch}
         />
       </div>
+      <AlarmIcon />
       <ProfileIcon />
     </header>
   );

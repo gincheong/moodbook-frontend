@@ -1,6 +1,6 @@
 import { Dropdown } from 'antd';
 import { AlarmImage } from './AlarmIcon.styles';
-import profileImage from '@/assets/profile.png';
+import alarmImage from '@/assets/alarm.png';
 import { useState } from 'react';
 import {
   Notification,
@@ -31,7 +31,7 @@ export const AlarmIcon = () => {
         })),
       }}
     >
-      <AlarmImage src={profileImage} alt='profile image' />
+      <AlarmImage src={alarmImage} alt='profile image' />
     </Dropdown>
   );
 };
