@@ -2,6 +2,8 @@ import {
   requestLogin,
   RequestLoginInput,
   RequestLoginResponse,
+  requestMe,
+  RequestMeResponse,
 } from '@/apis/user';
 import {
   Container,
@@ -14,21 +16,29 @@ import { Button, Card, Input, message, Typography } from 'antd';
 import { setLocalStorageItem, StorageKeys } from '@/utils/storage';
 import moodBookLogo from '@/assets/moodbook_logo.png';
 import { useNavigate } from 'react-router';
+import { useUserStore } from '@/stores/user';
 
 type FormValues = RequestLoginInput;
 
 export const SignIn = () => {
   const navigate = useNavigate();
+  const { setId } = useUserStore();
 
   const onSignInSubmit = async (values: FormValues) => {
     const { email, password } = values;
 
     try {
-      const response = await requestLogin({ email, password });
-      const data: RequestLoginResponse = await response.json();
-      const { accessToken, refreshToken } = data;
+      const loginResponse = await requestLogin({ email, password });
+      const loginData: RequestLoginResponse = await loginResponse.json();
+      const { accessToken, refreshToken } = loginData;
       setLocalStorageItem(StorageKeys.ACCESS_TOKEN, accessToken);
       setLocalStorageItem(StorageKeys.REFRESH_TOKEN, refreshToken);
+
+      const meResponse = await requestMe();
+      const meData: RequestMeResponse = await meResponse.json();
+
+      setId(meData.id);
+
       navigate('/');
     } catch (err) {
       const error = err as Error;

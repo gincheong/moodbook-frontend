@@ -35,3 +35,19 @@ export const requestLogin = (input: RequestLoginInput) => {
     body: JSON.stringify(input),
   });
 };
+
+export interface RequestMeResponse {
+  id: number;
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+  contact: string;
+  emailVerified: boolean;
+  status: string;
+}
+export const requestMe = () => {
+  return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/me`, {
+    method: 'GET',
+  });
+};

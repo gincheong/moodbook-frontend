@@ -1,11 +1,8 @@
 import { Dropdown } from 'antd';
-import { useNavigate } from 'react-router';
 import { AlarmImage } from './AlarmIcon.styles';
 import profileImage from '@/assets/profile.png';
 
 export const AlarmIcon = () => {
-  const navigate = useNavigate();
-
   return (
     <Dropdown
       menu={{
