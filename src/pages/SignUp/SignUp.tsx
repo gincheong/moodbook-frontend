@@ -47,7 +47,7 @@ export const SignUp = () => {
       <Card>
         <Form id='signUp' className={styles.inner} onFinish={onSignUpSubmit}>
           <div className={styles.formItemContainer}>
-            <Typography.Text>Email</Typography.Text>
+            <Typography.Text>이메일</Typography.Text>
             <Form.Item name='email' style={formItemStyle}>
               <Input required type='email' />
             </Form.Item>

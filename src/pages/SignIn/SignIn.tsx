@@ -1,3 +1,63 @@
+import {
+  requestLogin,
+  RequestLoginInput,
+  RequestLoginResponse,
+} from '@/apis/user';
+import {
+  Container,
+  Form,
+  FormItem,
+  FormItemWrapper,
+  LogoImg,
+} from './SignIn.styles';
+import { Button, Card, Input, message, Typography } from 'antd';
+import { setLocalStorageItem, StorageKeys } from '@/utils/storage';
+import moodBookLogo from '@/assets/moodbook_logo.png';
+import { useNavigate } from 'react-router';
+
+type FormValues = RequestLoginInput;
+
 export const SignIn = () => {
-  return <section>SignIn</section>;
+  const navigate = useNavigate();
+
+  const onSignInSubmit = async (values: FormValues) => {
+    const { email, password } = values;
+
+    try {
+      const response = await requestLogin({ email, password });
+      const data: RequestLoginResponse = await response.json();
+      const { accessToken, refreshToken } = data;
+      setLocalStorageItem(StorageKeys.ACCESS_TOKEN, accessToken);
+      setLocalStorageItem(StorageKeys.REFRESH_TOKEN, refreshToken);
+      navigate('/');
+    } catch (err) {
+      const error = err as Error;
+      message.error(error.message);
+    }
+  };
+
+  return (
+    <Container>
+      <LogoImg src={moodBookLogo} alt='MoodBook Logo' />
+      <Card>
+        <Form id='signIn' onFinish={onSignInSubmit}>
+          <FormItemWrapper>
+            <Typography.Text>이메일</Typography.Text>
+            <FormItem name='email'>
+              <Input required type='email' />
+            </FormItem>
+          </FormItemWrapper>
+          <FormItemWrapper>
+            <Typography.Text>비밀번호</Typography.Text>
+            <FormItem name='password'>
+              <Input required type='password' />
+            </FormItem>
+          </FormItemWrapper>
+          <Button type='default' size='large' htmlType='submit' key='submit'>
+            로그인
+          </Button>
+        </Form>
+      </Card>
+    </Container>
+  );
 };

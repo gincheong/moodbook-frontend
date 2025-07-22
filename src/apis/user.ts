@@ -15,7 +15,22 @@ export interface RequestTempSignUpInput {
   gender?: Gender;
 }
 export const requestTempSignUp = (input: RequestTempSignUpInput) => {
-  return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/tempSigUp`, {
+  return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/tempSignUp`, {
+    method: 'POST',
+    body: JSON.stringify(input),
+  });
+};
+
+export interface RequestLoginInput {
+  email: string;
+  password: string;
+}
+export interface RequestLoginResponse {
+  accessToken: string;
+  refreshToken: string;
+}
+export const requestLogin = (input: RequestLoginInput) => {
+  return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/login`, {
     method: 'POST',
     body: JSON.stringify(input),
   });
