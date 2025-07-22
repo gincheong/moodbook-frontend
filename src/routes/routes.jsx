@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import { Main } from '@/pages/Main/Main';
-import { Book } from '@/pages/Book/Book';
+import { Books } from '@/pages/Books/Books';
 import { MyPage } from '@/pages/MyPage/MyPage';
 import { Admin } from '@/pages/Admin/Admin';
 import { SignUp } from '@/pages/SignUp/SignUp';
@@ -12,7 +12,7 @@ import { SignIn } from '@/pages/SignIn/SignIn';
 
 export const Paths = {
   MAIN: '/',
-  BOOK: '/book',
+  BOOKS: '/books',
   ME: '/me',
   ADMIN: '/admin',
   SEARCH: '/search',
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
         Component: MainLayout,
         children: [
           { index: true, Component: Main },
-          { path: Paths.BOOK, Component: Book },
+          { path: Paths.BOOKS, Component: Books },
           { path: Paths.ME, Component: MyPage },
           { path: Paths.ADMIN, Component: Admin },
           { path: Paths.SEARCH, Component: Search },
