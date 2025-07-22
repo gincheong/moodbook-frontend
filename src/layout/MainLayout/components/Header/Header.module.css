@@ -23,12 +23,3 @@
   flex-direction: row;
   max-width: 300px;
 }
-
-.profileImage {
-  width: 30px;
-  height: 30px;
-}
-
-.logout {
-  all: unset;
-}
