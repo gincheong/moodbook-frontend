@@ -1,14 +1,17 @@
-import { Typography } from 'antd';
+import { Button, Typography } from 'antd';
 import { Buttons, Container, Paragraph } from './SelectMood.styles';
 import { MoodButton } from './components/MoodButton/MoodButton';
 import { Mood, MoodColors, Moods } from './constants';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const MOODS_ROW_1 = [Moods.ANXIETY, Moods.DEPRESSION, Moods.ANGER];
 const MOODS_ROW_2 = [Moods.JOY, Moods.SIMPLICITY, Moods.ANTICIPATION];
 const MOODS_ROW_3 = [Moods.LONELINESS, Moods.DETACHMENT, Moods.LONGING];
 
 export const SelectMood = () => {
+  const navigate = useNavigate();
+
   const [selectedMoods, setSelectedMoods] = useState<Mood[]>([]);
 
   const toggleMood = (mood: Mood) => {
@@ -19,6 +22,16 @@ export const SelectMood = () => {
     } else {
       setSelectedMoods([...selectedMoods, mood]);
     }
+  };
+
+  const onCompleteSelectionClick = async () => {
+    console.log(selectedMoods);
+
+    alert('TODO: 감정 저장 처리');
+  };
+
+  const onSelectLaterClick = () => {
+    navigate('/');
   };
 
   return (
@@ -64,6 +77,12 @@ export const SelectMood = () => {
           />
         ))}
       </Buttons>
+      <Button type='text' size='large' onClick={onCompleteSelectionClick}>
+        모두 선택했어요
+      </Button>
+      <Button type='link' size='small' onClick={onSelectLaterClick}>
+        다음에 선택할게요
+      </Button>
     </Container>
   );
 };
