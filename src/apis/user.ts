@@ -51,3 +51,21 @@ export const requestMe = () => {
     method: 'GET',
   });
 };
+
+export interface Notification {
+  id: number;
+  /** @example 'CHAT_APPLY' */
+  notifyType: string;
+  toName: string;
+  content: string;
+  /** @example '2025-07-22T15:03:43.400Z' */
+  createdAt: string;
+  url: string;
+  read: boolean;
+}
+export type RequestNotificationsResponse = Notification[];
+export const requestNotifications = (id: number) => {
+  return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/notification/${id}`, {
+    method: 'GET',
+  });
+};
