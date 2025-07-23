@@ -52,3 +52,9 @@ export const requestGetTrendingBooks = () => {
 
   return defaultFetch(url, { method: 'GET' });
 };
+
+export const requestGetRecommendationBooks = () => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/books/recommendations/star`;
+
+  return defaultFetch(url, { method: 'GET' });
+};
