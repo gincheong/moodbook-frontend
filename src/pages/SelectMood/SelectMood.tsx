@@ -27,7 +27,7 @@ export const SelectMood = () => {
   const onCompleteSelectionClick = async () => {
     console.log(selectedMoods);
 
-    alert('TODO: 감정 저장 처리');
+    alert('TODO: 감정 저장 처리 (API 필요)');
   };
 
   const onSelectLaterClick = () => {
