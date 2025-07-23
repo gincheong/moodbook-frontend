@@ -10,6 +10,7 @@ export interface Book {
   publisher: string;
   /** @example "2025-07-19T09:18:33.333Z" */
   pubDate: string;
+  /** 0~10 */
   reputation: number;
   coverImage: string;
   description: string;

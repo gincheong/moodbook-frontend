@@ -5,13 +5,13 @@ import styled from 'styled-components';
 const MAX_SCORE = 5;
 
 interface ScoreStarsProps {
+  /** 0 ~ 10 */
   reputation: number;
 }
 export const ScoreStars = (props: ScoreStarsProps) => {
   const { reputation } = props;
 
-  // * 정수로 가정하고 작업
-  const filledStarCount = Math.min(MAX_SCORE, reputation);
+  const filledStarCount = Math.floor(reputation / 2);
   const outlinedStarCount = MAX_SCORE - filledStarCount;
 
   return (
