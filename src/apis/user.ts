@@ -13,6 +13,8 @@ export interface RequestTempSignUpInput {
   name: string;
   contact: string;
   gender?: Gender;
+  address: string;
+  nickname: string;
 }
 export const requestTempSignUp = (input: RequestTempSignUpInput) => {
   return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/tempSignUp`, {

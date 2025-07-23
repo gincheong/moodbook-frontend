@@ -20,7 +20,16 @@ export const SignUp = () => {
   };
 
   const onSignUpSubmit = async (values: FormValues) => {
-    const { email, password, passwordConfirm, contact, name, gender } = values;
+    const {
+      email,
+      password,
+      passwordConfirm,
+      contact,
+      name,
+      gender,
+      nickname,
+      address,
+    } = values;
 
     if (password !== passwordConfirm) {
       message.error('비밀번호가 서로 다릅니다.');
@@ -33,6 +42,8 @@ export const SignUp = () => {
       contact,
       gender,
       name,
+      address,
+      nickname,
     });
     if (response.status === 200) {
       navigate('/');
@@ -71,6 +82,12 @@ export const SignUp = () => {
             </Form.Item>
           </div>
           <div className={styles.formItemContainer}>
+            <Typography.Text>닉네임</Typography.Text>
+            <Form.Item name='nickname' style={formItemStyle}>
+              <Input required type='text' />
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
             <Typography.Text>전화번호</Typography.Text>
             <Form.Item name='contact' style={formItemStyle}>
               <Input required type='tel' />
@@ -83,6 +100,12 @@ export const SignUp = () => {
                 <Radio value={Genders.MALE}>남성</Radio>
                 <Radio value={Genders.FEMALE}>여성</Radio>
               </Radio.Group>
+            </Form.Item>
+          </div>
+          <div className={styles.formItemContainer}>
+            <Typography.Text>주소</Typography.Text>
+            <Form.Item name='address' style={formItemStyle}>
+              <Input required type='text' />
             </Form.Item>
           </div>
           <Button type='default' size='large' htmlType='submit' key='submit'>
