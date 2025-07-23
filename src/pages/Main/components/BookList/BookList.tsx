@@ -7,6 +7,7 @@ import {
   Card,
   CustomArrow,
   Wrapper,
+  Texts,
 } from './BookList.styles';
 import Slider, { CustomArrowProps, Settings } from 'react-slick';
 import { Book } from '@/apis/books';
@@ -32,7 +33,6 @@ interface BookListProps {
   title: string;
 }
 export const BookList = (props: BookListProps) => {
-  // TODO Carousel 적용
   const { title, books } = props;
 
   const sliderSettings: Settings = {
@@ -58,10 +58,13 @@ export const BookList = (props: BookListProps) => {
           <div key={book.bookId}>
             <Card size='small' $backgroundColor={getRandomColor()}>
               <CardContent>
-                <div>
-                  <Title>{book.title}</Title>
-                  <Description>{book.description}</Description>
-                </div>
+                {/* 제목, 설명에 커서 올리면 툴팁으로 전문이 뜸 */}
+                <Texts>
+                  <Title title={book.title}>{book.title}</Title>
+                  <Description title={book.description}>
+                    {book.description}
+                  </Description>
+                </Texts>
                 <Cover>
                   <Image
                     width={100}

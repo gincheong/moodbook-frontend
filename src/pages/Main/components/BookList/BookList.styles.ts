@@ -16,22 +16,39 @@ export const Card = styled(AntdCard)<CardProps>`
 export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   row-gap: 40px;
   padding-bottom: 12px;
-  width: 150px;
+  width: 200px;
+  height: 320px;
+`;
+
+export const Texts = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
 `;
 
 export const Title = styled.span`
-  display: flex;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
   flex-direction: column;
   row-gap: 2px;
-  font-weight: 500;
-  color: red;
+  font-weight: 700;
 `;
 
 export const Description = styled.span`
-  font-size: 10px;
-  color: #727272;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+  font-size: 12px;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const Cover = styled.div`

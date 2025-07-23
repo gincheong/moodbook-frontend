@@ -47,22 +47,8 @@ export interface TrendingBooksResponse {
   empty: boolean;
 }
 
-interface RequestGetTrendingBooksInput {
-  page: number;
-  size: number;
-}
-export const requestGetTrendingBooks = (
-  input: RequestGetTrendingBooksInput,
-) => {
-  const { page, size } = input;
-
-  const searchParams = new URLSearchParams({
-    page: String(page),
-    size: String(size),
-    sort: JSON.stringify(['string']),
-  }).toString();
-
-  const url = `${Envs.VITE_API_ENDPOINT}/api/trending?${searchParams}`;
+export const requestGetTrendingBooks = () => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/books/trending`;
 
   return defaultFetch(url, { method: 'GET' });
 };

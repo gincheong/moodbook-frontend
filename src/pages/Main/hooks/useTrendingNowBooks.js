@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import { getTrendingBooks } from '../../../apis/books';
+import { requestGetTrendingBooks } from '../../../apis/books';
 
 const GET_BOOK_PAGE_SIZE = 10;
 
@@ -14,8 +14,10 @@ export const useTrendingNowBooks = () => {
       return;
     }
 
-    const response = await fetch('./dummyBooks.json', { method: 'GET' });
-    // const response = await getTrendingBooks({ size: GET_BOOK_PAGE_SIZE, page });
+    const response = await requestGetTrendingBooks({
+      size: GET_BOOK_PAGE_SIZE,
+      page,
+    });
 
     if (response.ok) {
       const json = await response.json();
