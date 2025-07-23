@@ -2,10 +2,10 @@ import { Book, requestGetBookDetail } from '@/apis/books';
 import { useEffect, useState } from 'react';
 
 interface UseBookProps {
-  id?: number;
+  bookId?: number;
 }
 export const useBook = (props: UseBookProps) => {
-  const { id } = props;
+  const { bookId } = props;
 
   // TODO remove dummy data
   const [book, setBook] = useState<Book>({
@@ -28,11 +28,11 @@ export const useBook = (props: UseBookProps) => {
 
   useEffect(() => {
     const requestBookDetail = async () => {
-      if (!id) {
+      if (!bookId) {
         return;
       }
 
-      const response = await requestGetBookDetail(id);
+      const response = await requestGetBookDetail(bookId);
 
       if (response.ok) {
         const json = await response.json();
@@ -42,7 +42,7 @@ export const useBook = (props: UseBookProps) => {
       }
     };
     requestBookDetail();
-  }, [id]);
+  }, [bookId]);
 
   return { book };
 };

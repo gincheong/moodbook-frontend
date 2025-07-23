@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 60px;
-  row-gap: 20px;
+  row-gap: 40px;
 `;
 
 export const BookInfo = styled.div`
@@ -31,4 +31,16 @@ export const DetailList = styled.ul`
   padding-inline-start: 1.5em;
   margin: 0;
   white-space: pre;
+`;
+
+export const Content = styled.section`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+`;
+
+export const ReviewerName = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 10px;
 `;

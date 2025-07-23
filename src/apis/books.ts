@@ -1,5 +1,6 @@
 import { defaultFetch } from '.';
 import { Envs } from '../utils/env';
+import { PageContent } from './types';
 
 export interface Book {
   bookId: number;
@@ -18,34 +19,7 @@ export interface Book {
   viewCount: number;
 }
 
-export interface TrendingBooksResponse {
-  totalElements: number;
-  totalPages: number;
-  pageable: {
-    paged: boolean;
-    pageNumber: number;
-    pageSize: number;
-    offset: number;
-    sort: {
-      sorted: boolean;
-      empty: boolean;
-      unsorted: boolean;
-    };
-    unpaged: boolean;
-  };
-  size: number;
-  content: Book[];
-  number: number;
-  sort: {
-    sorted: boolean;
-    empty: boolean;
-    unsorted: boolean;
-  };
-  numberOfElements: number;
-  first: boolean;
-  last: boolean;
-  empty: boolean;
-}
+export type TrendingBooksResponse = PageContent<Book>;
 
 export const requestGetTrendingBooks = () => {
   const url = `${Envs.VITE_API_ENDPOINT}/api/books/trending`;

@@ -3,18 +3,22 @@ import { useBook } from './hooks/useBook';
 import {
   BookInfo,
   Container,
+  Content,
   DetailList,
+  ReviewerName,
   Texts,
   Title,
 } from './BookDetail.styles';
-import { Button, Image, Space } from 'antd';
+import { Button, Card, Image, Space } from 'antd';
 import { ScoreStars } from './components/ScoreStars';
+import { useBookReviews } from './hooks/useBookReviews';
 
 export const BookDetail = () => {
   const [searchParams, _] = useSearchParams();
   const bookId = searchParams.get('id') ?? '';
 
-  const { book } = useBook({ id: Number(bookId) });
+  const { book } = useBook({ bookId: Number(bookId) });
+  const { reviews } = useBookReviews({ bookId: Number(bookId) });
 
   if (!bookId) {
     return <p>잘못된 경로입니다.</p>;
@@ -54,6 +58,18 @@ export const BookDetail = () => {
           </Space>
         </Texts>
       </BookInfo>
+      <Content>
+        <Title>책 소개</Title>
+        <p>{book.description}</p>
+        <Title>사용자 리뷰</Title>
+        {reviews.map((review) => (
+          <Card key={review.reviewId}>
+            <ReviewerName>{review.reviewerName}</ReviewerName>
+            <ScoreStars reputation={review.starRating} />
+            <p>{review.content}</p>
+          </Card>
+        ))}
+      </Content>
     </Container>
   );
 };
