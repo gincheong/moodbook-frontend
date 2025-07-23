@@ -10,10 +10,12 @@ import { Search } from '@/pages/Search/Search';
 import { AiSearch } from '@/pages/AiSearch/AiSearch';
 import { SelectMood } from '@/pages/SelectMood/SelectMood';
 import { SignIn } from '@/pages/SignIn/SignIn';
+import { BookDetail } from '@/pages/BookDetail/BookDetail';
 
 export const Paths = {
   MAIN: '/',
   BOOKS: '/books',
+  BOOK: '/book',
   ME: '/me',
   ADMIN: '/admin',
   SEARCH: '/search',
@@ -34,6 +36,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, Component: Main },
           { path: Paths.BOOKS, Component: Books },
+          { path: Paths.BOOK, Component: BookDetail },
           { path: Paths.ME, Component: MyPage },
           { path: Paths.ADMIN, Component: Admin },
           { path: Paths.SEARCH, Component: Search },

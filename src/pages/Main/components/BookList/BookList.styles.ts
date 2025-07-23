@@ -29,7 +29,9 @@ export const Texts = styled.div`
   row-gap: 4px;
 `;
 
-export const Title = styled.span`
+export const Title = styled.button`
+  all: unset;
+
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -38,6 +40,8 @@ export const Title = styled.span`
   flex-direction: column;
   row-gap: 2px;
   font-weight: 700;
+
+  cursor: pointer;
 `;
 
 export const Description = styled.span`

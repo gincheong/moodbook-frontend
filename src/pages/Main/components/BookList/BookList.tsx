@@ -11,6 +11,8 @@ import {
 } from './BookList.styles';
 import Slider, { CustomArrowProps, Settings } from 'react-slick';
 import { Book } from '@/apis/books';
+import { useNavigate } from 'react-router';
+import { Paths } from '@/routes/routes';
 
 const getRandomColor = () => {
   const colors = [
@@ -34,6 +36,7 @@ interface BookListProps {
 }
 export const BookList = (props: BookListProps) => {
   const { title, books } = props;
+  const navigate = useNavigate();
 
   const sliderSettings: Settings = {
     infinite: true,
@@ -50,6 +53,10 @@ export const BookList = (props: BookListProps) => {
     nextArrow: <Arrow />,
   };
 
+  const onTitleClick = (bookId: number) => {
+    navigate(`${Paths.BOOK}?id=${bookId}`);
+  };
+
   return (
     <Wrapper>
       <Typography.Title level={4}>{title}</Typography.Title>
@@ -60,7 +67,12 @@ export const BookList = (props: BookListProps) => {
               <CardContent>
                 {/* 제목, 설명에 커서 올리면 툴팁으로 전문이 뜸 */}
                 <Texts>
-                  <Title title={book.title}>{book.title}</Title>
+                  <Title
+                    title={book.title}
+                    onClick={() => onTitleClick(book.bookId)}
+                  >
+                    {book.title}
+                  </Title>
                   <Description title={book.description}>
                     {book.description}
                   </Description>
