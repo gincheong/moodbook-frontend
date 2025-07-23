@@ -1,5 +1,14 @@
 import { useSearchParams } from 'react-router';
 import { useBook } from './hooks/useBook';
+import {
+  BookInfo,
+  Container,
+  DetailList,
+  Texts,
+  Title,
+} from './BookDetail.styles';
+import { Image } from 'antd';
+import { ScoreStars } from './components/ScoreStars';
 
 export const BookDetail = () => {
   const [searchParams, _] = useSearchParams();
@@ -14,5 +23,20 @@ export const BookDetail = () => {
     return <p>{`도서 정보가 없습니다. id: ${bookId}`}</p>;
   }
 
-  return <>{book.title}</>;
+  return (
+    <Container>
+      <BookInfo>
+        <Image src={book.coverImage} alt='book cover image' width={150} />
+        <Texts>
+          <Title>{book.title}</Title>
+          <DetailList>
+            <li>{`저자 :    ${book.author}`}</li>
+            <li>{`장르 :    ${book.categoryName}`}</li>
+            <li>{`출판일:  ${book.pubDate}`}</li>
+          </DetailList>
+          <ScoreStars reputation={book.reputation} />
+        </Texts>
+      </BookInfo>
+    </Container>
+  );
 };

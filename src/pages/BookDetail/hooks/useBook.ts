@@ -16,7 +16,7 @@ export const useBook = (props: UseBookProps) => {
     author: '린네아 파살러 (지은이), 김미정 (옮긴이)',
     publisher: '현대지성',
     pubDate: '2025-06-30',
-    reputation: 0,
+    reputation: 3,
     coverImage:
       'https://image.aladin.co.kr/product/36754/0/coversum/k772030298_1.jpg',
     description:

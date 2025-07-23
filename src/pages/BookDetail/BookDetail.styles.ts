@@ -1,0 +1,33 @@
+import styled from 'styled-components';
+
+export const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+  row-gap: 20px;
+`;
+
+export const BookInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+`;
+
+export const Texts = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+`;
+
+export const Title = styled.span`
+  font-size: 20px;
+  font-weight: 700;
+`;
+
+export const DetailList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+  padding-inline-start: 1.5em;
+  white-space: pre;
+`;
