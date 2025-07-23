@@ -46,7 +46,8 @@ export const SignUp = () => {
       nickname,
     });
     if (response.status === 200) {
-      navigate('/');
+      alert(response.text);
+      navigate('/sign-in');
     } else {
       message.error('가입 요청 중 오류가 발생했습니다.');
     }
