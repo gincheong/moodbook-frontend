@@ -1,12 +1,32 @@
-# React + Vite
+# Moodbook frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 실행
 
-Currently, two official plugins are available:
+```bash
+npm install
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+실행 후 http://localhost:5173 에서 확인 가능합니다.
 
-## Expanding the ESLint configuration
+## Route
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+`src/routes/route.ts` 파일의 내용을 참고하시면 됩니다. 이 문서 작성 중인 현재 기준으로
+
+```ts
+export const Paths = {
+  MAIN: '/',
+  BOOKS: '/books',
+  BOOK: '/book',
+  ME: '/me',
+  ADMIN: '/admin',
+  SEARCH: '/search',
+  AI_SEARCH: '/ai-search',
+  SELECT_MOOD: '/select-mood',
+
+  SIGN_UP: '/sign-up',
+  SIGN_IN: '/sign-in',
+};
+```
+
+이고, `http://localhost:5173/books` 과 같은 형식으로 입력하셔서 진입하면 됩니다.
