@@ -16,7 +16,7 @@ export const BookInfo = styled.div`
 export const Texts = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 4px;
+  row-gap: 20px;
 `;
 
 export const Title = styled.span`
@@ -29,5 +29,6 @@ export const DetailList = styled.ul`
   flex-direction: column;
   row-gap: 14px;
   padding-inline-start: 1.5em;
+  margin: 0;
   white-space: pre;
 `;
