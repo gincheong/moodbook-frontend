@@ -2,12 +2,13 @@ import { requestVerifyEmail } from '@/apis/user';
 import { Paths } from '@/routes/routes';
 import { Button, message, Typography } from 'antd';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import styled from 'styled-components';
 
 export const VerifyEmail = () => {
   const [searchParams, _] = useSearchParams();
   const token = searchParams.get('token') ?? '';
+  const navigate = useNavigate();
 
   const [isVerifySuccess, setVerifySuccess] = useState(false);
 
@@ -34,7 +35,7 @@ export const VerifyEmail = () => {
           <Typography.Paragraph>
             이메일 인증이 완료되었니니다.
           </Typography.Paragraph>
-          <Button type='link' href={Paths.SIGN_IN}>
+          <Button type='link' onClick={() => navigate(Paths.SIGN_IN)}>
             로그인 페이지로 이동
           </Button>
         </>
