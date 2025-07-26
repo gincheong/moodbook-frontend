@@ -1,3 +1,4 @@
+import { Paths } from '@/routes/routes';
 import { getLocalStorageItem, StorageKeys } from '@/utils/storage';
 
 export const defaultFetch = async (
@@ -15,7 +16,7 @@ export const defaultFetch = async (
   });
 
   if (response.status === 401) {
-    location.href = '/sign-in';
+    location.href = Paths.SIGN_IN;
   }
 
   return response;

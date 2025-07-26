@@ -17,6 +17,8 @@ import { setLocalStorageItem, StorageKeys } from '@/utils/storage';
 import moodBookLogo from '@/assets/moodbook_logo.png';
 import { useNavigate } from 'react-router';
 import { useUserStore } from '@/stores/user';
+import { Paths } from '@/routes/routes';
+import { SignUpButton } from '../SignUp/SignUp.styles';
 
 type FormValues = RequestLoginInput;
 
@@ -46,6 +48,10 @@ export const SignIn = () => {
     }
   };
 
+  const onSignUpClick = () => {
+    navigate(Paths.SIGN_UP);
+  };
+
   return (
     <Container>
       <LogoImg src={moodBookLogo} alt='MoodBook Logo' />
@@ -67,6 +73,14 @@ export const SignIn = () => {
             로그인
           </Button>
         </Form>
+        <SignUpButton
+          type='link'
+          size='middle'
+          htmlType='button'
+          onClick={onSignUpClick}
+        >
+          회원가입
+        </SignUpButton>
       </Card>
     </Container>
   );
