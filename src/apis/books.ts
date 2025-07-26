@@ -40,3 +40,24 @@ export const requestGetBookDetail = (id: number) => {
 
   return defaultFetch(url, { method: 'GET' });
 };
+
+export interface RecentBook {
+  bookId: number;
+  title: string;
+  coverImage: string;
+  /** @example '2025-07-22T14:28:34.852305' */
+  viewedAt: string;
+}
+
+// * 리턴 타입이 묘하게 다름
+export interface RecentBooksResponse extends PageContent<RecentBook> {
+  data: {
+    content: RecentBook[];
+  };
+}
+/** @return {RecentBooksResponse} */
+export const requestGetRecentBooks = () => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/recent-books`;
+
+  return defaultFetch(url, { method: 'GET' });
+};
