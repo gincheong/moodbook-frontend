@@ -31,7 +31,7 @@ export interface RequestLoginResponse {
   accessToken: string;
   refreshToken: string;
 }
-export const requestLogin = (input: RequestLoginInput) => {
+export const requestSignIn = (input: RequestLoginInput) => {
   return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/login`, {
     method: 'POST',
     body: JSON.stringify(input),

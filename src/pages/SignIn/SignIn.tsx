@@ -1,5 +1,5 @@
 import {
-  requestLogin,
+  requestSignIn,
   RequestLoginInput,
   RequestLoginResponse,
   requestMe,
@@ -30,7 +30,7 @@ export const SignIn = () => {
     const { email, password } = values;
 
     try {
-      const loginResponse = await requestLogin({ email, password });
+      const loginResponse = await requestSignIn({ email, password });
 
       if (loginResponse.status === 200) {
         const loginData: RequestLoginResponse = await loginResponse.json();
