@@ -4,15 +4,19 @@ import { MoodButton } from './components/MoodButton/MoodButton';
 import { Mood, MoodColors, Moods } from './constants';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useUserStore } from '@/stores/user';
+import { Paths } from '@/routes/routes';
 
-const MOODS_ROW_1 = [Moods.ANXIETY, Moods.DEPRESSION, Moods.ANGER];
-const MOODS_ROW_2 = [Moods.JOY, Moods.SIMPLICITY, Moods.ANTICIPATION];
-const MOODS_ROW_3 = [Moods.LONELINESS, Moods.DETACHMENT, Moods.LONGING];
+const MOODS_ROW_1 = [Moods.JOY, Moods.SADNESS, Moods.ANGER];
+const MOODS_ROW_2 = [Moods.ANXIETY, Moods.EXCITEMENT, Moods.COMFORT];
+const MOODS_ROW_3 = [Moods.LONELINESS, Moods.INSPIRATION, Moods.HAPPINESS];
 
 export const SelectMood = () => {
   const navigate = useNavigate();
 
-  const [selectedMoods, setSelectedMoods] = useState<Mood[]>([]);
+  const { moods, setMoods } = useUserStore();
+
+  const [selectedMoods, setSelectedMoods] = useState<Mood[]>(moods);
 
   const toggleMood = (mood: Mood) => {
     if (selectedMoods.includes(mood)) {
@@ -25,13 +29,11 @@ export const SelectMood = () => {
   };
 
   const onCompleteSelectionClick = async () => {
-    console.log(selectedMoods);
-
-    alert('TODO: 감정 저장 처리 (API 필요)');
+    setMoods(selectedMoods);
   };
 
   const onSelectLaterClick = () => {
-    navigate('/');
+    navigate(Paths.MAIN);
   };
 
   return (
