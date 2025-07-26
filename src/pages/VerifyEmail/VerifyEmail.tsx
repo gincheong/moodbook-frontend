@@ -18,7 +18,8 @@ export const VerifyEmail = () => {
       if (response.ok) {
         setVerifySuccess(true);
       } else {
-        message.error(json);
+        message.error(JSON.stringify(json));
+        console.error(JSON.stringify(json));
         setVerifySuccess(false);
       }
     };
@@ -47,5 +48,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   row-gap: 20px;
 `;
