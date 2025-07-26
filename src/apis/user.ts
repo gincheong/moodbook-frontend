@@ -71,3 +71,9 @@ export const requestNotifications = (id: number) => {
     method: 'GET',
   });
 };
+
+export const requestLogout = (id: number) => {
+  return defaultFetch(`${Envs.VITE_API_ENDPOINT}/api/oauth/logout/${id}`, {
+    method: 'POST',
+  });
+};
