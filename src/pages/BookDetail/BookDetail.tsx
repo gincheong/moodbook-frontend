@@ -72,6 +72,7 @@ export const BookDetail = () => {
         <Title>책 소개</Title>
         <p>{book.description}</p>
         <Title>사용자 리뷰</Title>
+        {reviews.length === 0 && <p>등록된 리뷰가 없습니다.</p>}
         {reviews.map((review) => (
           <Card key={review.reviewId}>
             <ReviewerName>{review.reviewerName}</ReviewerName>
