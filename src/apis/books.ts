@@ -61,3 +61,32 @@ export const requestGetRecentBooks = () => {
 
   return defaultFetch(url, { method: 'GET' });
 };
+
+export const requestAddBookMark = (bookId: number) => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/bookmark`;
+
+  return defaultFetch(url, {
+    method: 'POST',
+    body: JSON.stringify({ bookId }),
+  });
+};
+
+export const requestDeleteBookMark = (bookId: number) => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/bookmark/${bookId}`;
+
+  return defaultFetch(url, { method: 'DELETE' });
+};
+
+export type RequestGetBookMarksResponse = {
+  bookId: number;
+  title: string;
+  coverImage: string;
+  description: string;
+  categoryName: string;
+}[];
+/** @return RequestGetBookMarksResponse */
+export const requestGetBookMarks = () => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/bookmark`;
+
+  return defaultFetch(url, { method: 'GET' });
+};
