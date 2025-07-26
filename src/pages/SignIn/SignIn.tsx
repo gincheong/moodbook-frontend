@@ -11,6 +11,7 @@ import {
   FormItem,
   FormItemWrapper,
   LogoImg,
+  SocialLoginButton,
 } from './SignIn.styles';
 import { Button, Card, Input, message, Typography } from 'antd';
 import { setLocalStorageItem, StorageKeys } from '@/utils/storage';
@@ -19,6 +20,7 @@ import { useNavigate } from 'react-router';
 import { useUserStore } from '@/stores/user';
 import { Paths } from '@/routes/routes';
 import { SignUpButton } from '../SignUp/SignUp.styles';
+import KakaoLoginImage from '@/assets/kakao_login_small.png';
 
 type FormValues = RequestLoginInput;
 
@@ -57,6 +59,10 @@ export const SignIn = () => {
     navigate(Paths.SIGN_UP);
   };
 
+  const onSocialLoginClick = () => {
+    alert('TODO');
+  };
+
   return (
     <Container>
       <LogoImg
@@ -82,6 +88,9 @@ export const SignIn = () => {
             로그인
           </Button>
         </Form>
+        <SocialLoginButton onClick={onSocialLoginClick}>
+          <img src={KakaoLoginImage} />
+        </SocialLoginButton>
         <SignUpButton
           type='link'
           size='middle'
