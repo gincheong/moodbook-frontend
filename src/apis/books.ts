@@ -77,13 +77,14 @@ export const requestDeleteBookMark = (bookId: number) => {
   return defaultFetch(url, { method: 'DELETE' });
 };
 
-export type RequestGetBookMarksResponse = {
+export interface Bookmark {
   bookId: number;
   title: string;
   coverImage: string;
   description: string;
   categoryName: string;
-}[];
+}
+export type RequestGetBookMarksResponse = Bookmark[];
 /** @return RequestGetBookMarksResponse */
 export const requestGetBookMarks = () => {
   const url = `${Envs.VITE_API_ENDPOINT}/api/bookmark`;

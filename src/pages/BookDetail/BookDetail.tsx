@@ -12,7 +12,7 @@ import {
 import { Button, Card, Image, Space } from 'antd';
 import { ScoreStars } from './components/ScoreStars';
 import { useBookReviews } from './hooks/useBookReviews';
-import { useBookmarks } from './hooks/useBookmarks';
+import { useBookmarks } from '../../hooks/useBookmarks';
 import { requestAddBookMark, requestDeleteBookMark } from '@/apis/books';
 
 export const BookDetail = () => {
@@ -63,7 +63,7 @@ export const BookDetail = () => {
               다른 유저들의 독후감 보기
             </Button>
             <Button type='primary' onClick={onBookmarkClick}>
-              {isBookmarked ? '북마크에 추가' : '북마크됨'}
+              {isBookmarked ? '북마크 삭제' : '북마크에 추가'}
             </Button>
           </Space>
         </Texts>
