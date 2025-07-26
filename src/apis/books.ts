@@ -91,3 +91,14 @@ export const requestGetBookMarks = () => {
 
   return defaultFetch(url, { method: 'GET' });
 };
+
+export type RequestGetBooksWithKeywordResponse = PageContent<Book>;
+/**
+ * 전체 도서 조회
+ * @return RequestGetBooksResponse
+ */
+export const requestGetBooksWithKeyword = (keyword: string) => {
+  const url = `${Envs.VITE_API_ENDPOINT}/api/books/autocomplete?keyword=${keyword}`;
+
+  return defaultFetch(url, { method: 'GET' });
+};
