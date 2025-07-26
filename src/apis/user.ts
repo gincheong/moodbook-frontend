@@ -77,3 +77,12 @@ export const requestLogout = (id: number) => {
     method: 'POST',
   });
 };
+
+export const requestVerifyEmail = (token: string) => {
+  return defaultFetch(
+    `${Envs.VITE_API_ENDPOINT}/auth/verify-email?token=${token}`,
+    {
+      method: 'GET',
+    },
+  );
+};
