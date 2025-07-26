@@ -31,17 +31,22 @@ export const SignIn = () => {
 
     try {
       const loginResponse = await requestLogin({ email, password });
-      const loginData: RequestLoginResponse = await loginResponse.json();
-      const { accessToken, refreshToken } = loginData;
-      setLocalStorageItem(StorageKeys.ACCESS_TOKEN, accessToken);
-      setLocalStorageItem(StorageKeys.REFRESH_TOKEN, refreshToken);
 
-      const meResponse = await requestMe();
-      const meData: RequestMeResponse = await meResponse.json();
+      if (loginResponse.status === 200) {
+        const loginData: RequestLoginResponse = await loginResponse.json();
+        const { accessToken, refreshToken } = loginData;
+        setLocalStorageItem(StorageKeys.ACCESS_TOKEN, accessToken);
+        setLocalStorageItem(StorageKeys.REFRESH_TOKEN, refreshToken);
 
-      setId(meData.id);
+        const meResponse = await requestMe();
+        const meData: RequestMeResponse = await meResponse.json();
 
-      navigate('/');
+        setId(meData.id);
+
+        navigate(Paths.MAIN);
+      } else if (loginResponse.status === 404) {
+        message.error('가입되지 않은 계정입니다.');
+      }
     } catch (err) {
       const error = err as Error;
       message.error(error.message);
@@ -54,7 +59,11 @@ export const SignIn = () => {
 
   return (
     <Container>
-      <LogoImg src={moodBookLogo} alt='MoodBook Logo' />
+      <LogoImg
+        src={moodBookLogo}
+        alt='MoodBook Logo'
+        onClick={() => navigate(Paths.SIGN_IN)}
+      />
       <Card>
         <Form id='signIn' onFinish={onSignInSubmit}>
           <FormItemWrapper>

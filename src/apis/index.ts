@@ -10,12 +10,15 @@ export const defaultFetch = async (
   const response = await fetch(input, {
     ...init,
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: accessToken ? `Bearer ${accessToken}` : '',
       'Content-type': 'application/json',
     },
   });
 
   if (response.status === 401) {
+    const json = await response.json();
+    alert(json.message);
+    console.error(input, json.message);
     location.href = Paths.SIGN_IN;
   }
 
