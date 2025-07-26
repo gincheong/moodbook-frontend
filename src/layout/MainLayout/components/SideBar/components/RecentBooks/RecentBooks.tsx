@@ -17,6 +17,9 @@ export const RecentBooks = () => {
     navigate(`${Paths.BOOK}?id=${bookId}`);
   };
 
+  if (recentBooks.length === 0) {
+    return <></>;
+  }
   return (
     <Container>
       <Typography.Text style={TextStyles}>최근 본 도서</Typography.Text>
