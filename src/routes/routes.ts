@@ -27,7 +27,7 @@ export const Paths = {
 
   SIGN_UP: '/sign-up',
   SIGN_IN: '/sign-in',
-  VERIFY_EMAIL: '/auth/verify-email',
+  VERIFY_EMAIL: '/verify-email',
 };
 
 export const router = createBrowserRouter([
