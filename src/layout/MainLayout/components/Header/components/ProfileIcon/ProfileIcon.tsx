@@ -44,7 +44,11 @@ export const ProfileIcon = () => {
   if (role === Roles.ADMIN) {
     dropdownItems.push({
       key: 'me',
-      label: <Link to='/admin'>관리자 페이지</Link>,
+      label: (
+        <Link to='/admin' target='_blank'>
+          관리자 페이지
+        </Link>
+      ),
     });
   }
 
