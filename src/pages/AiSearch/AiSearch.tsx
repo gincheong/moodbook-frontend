@@ -9,7 +9,6 @@ import {
   UserChatBubble,
 } from './AiSearch.styles';
 import { Image, Input, InputRef } from 'antd';
-import { useNavigate } from 'react-router';
 import { Paths } from '@/routes/routes';
 
 interface AiChat {
@@ -25,8 +24,6 @@ interface UserChat {
 type Chat = AiChat | UserChat;
 
 export const AiSearch = () => {
-  const navigate = useNavigate();
-
   const [isLoading, setLoading] = useState(false);
   const [chats, setChats] = useState<Chat[]>([]);
   const [chatInputText, setChatInputText] = useState('');
